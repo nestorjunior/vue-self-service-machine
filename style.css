@@ -33,6 +33,8 @@ section.items .product {
     flex: 0 0 calc(33.333% - 24px);
     cursor: pointer;
     text-align: center;
+    min-height: 170px;
+    border: 2px solid lightgrey;
 }
 
 section.items .product.selected {

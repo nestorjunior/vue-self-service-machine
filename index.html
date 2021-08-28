@@ -17,17 +17,22 @@
             
             <section class="items">
                 <h4>Produtos</h4>
-                <div class="product" v-for="product in products">
+                <div 
+                    class="product" 
+                    v-for="product in products"
+                    v-on:click="product.active = !product.active"
+                    :class="{ selected : product.active }" 
+                >
                     <div class="photo">
-                        <img :src="product.photo">
+                        <img v-bind:src="product.photo">
                     </div>
                     <div class="description">
                         <span class="name">{{ product.name }}</span>
                         <span class="price">{{ product.price }}</span>
-                        <div class="quantity-area">
-                            <button>-</button>
+                        <div class="quantity-area" v-if="product.active">
+                            <button v-on:click.stop="product.quantity--" :disabled="product.quantity == 0">-</button>
                             <span class="quantity">{{ product.quantity }}</span>
-                            <button>+</button>
+                            <button v-on:click.stop="product.quantity++">+</button>
                         </div>
                     </div>
                 </div>
